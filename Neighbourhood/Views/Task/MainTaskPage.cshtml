@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Neighbourhood.Models.Task>
+
+@{
+    ViewBag.Title = "List";
+}
+<header><h2>List</h2></header>
+
+}
+<div class="wrapper_frm_grp">
+    
+    <table class="table">
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.task_des)
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.upvotes)
+                    <input type="button" value="Upvote" onclick="location.href='@Html.Action("UpvotePost", new{id = item.task_id})'" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.downvotes)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="formgroup_createbtn">
+        <input type="button" value="Create a task" class="btn btn-primary" name="createbtn" onclick="location.href='@Url.Action("CreateTask")'" />
+    </div>
+</div>
